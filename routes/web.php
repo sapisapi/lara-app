@@ -18,6 +18,9 @@ Route::group(['middleware' => 'guest'], function() {
 
 Route::group(['middleware' => 'auth'], function() {
     Route::post('/user/logout', 'UserController@logout')->name('user.logout');
-    Route::resource('user', 'UserController', ['only' => ['index', 'edit', 'update', 'destroy']]);
     Route::resource('word', 'WordController', ['only' => ['index', 'create', 'store', 'edit']]);
+});
+
+Route::group(['middleware' => ['auth', 'can:admin']], function () {
+    Route::resource('user', 'UserController', ['only' => ['index', 'edit', 'update', 'destroy']]);
 });
