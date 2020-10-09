@@ -20,14 +20,18 @@ Route::group(['middleware' => 'auth'], function() {
     Route::post('/user/logout', 'UserController@logout')->name('user.logout');
     Route::resource('word', 'WordController', ['only' => ['index', 'create', 'store', 'edit']]);
     Route::get('/conversation/{id}', 'ConversationController@show')->name('conversation.show');
-
+    Route::get('/basic/{id}', 'BasicController@show')->name('basic.show');
 });
 
 Route::group(['middleware' => ['auth', 'can:admin']], function () {
     Route::resource('conversation', 'ConversationController',['only' => ['store','edit','update']]);
     Route::get('conversation/{id}/create', 'ConversationController@create')->name('conversation.create');
 
+    Route::resource('basic', 'BasicController',['only' => ['store','edit','update','destroy']]);
+    Route::get('basic/{id}/create', 'BasicController@create')->name('basic.create');
+
     Route::resource('user', 'UserController', ['only' => ['index', 'edit', 'update', 'destroy']]);
+    
     Route::resource('chapter', 'ChapterController');
 
     Route::resource('classification', 'ClassificationController',['only' => ['store','edit','show','update','destroy']]);

@@ -16,7 +16,8 @@ class DatabaseSeeder extends Seeder
             WordsTableSeeder::class,
             ChaptersTableSeeder::class,
             ClassificationsTableSeeder::class,
-            ConversationsTableSeeder::class
+            ConversationsTableSeeder::class,
+            BasicsTableSeeder::class
         ]);
     }
 }

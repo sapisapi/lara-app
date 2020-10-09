@@ -19,11 +19,6 @@
  <!-- Styles -->
  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
- <style>
-    .errors {
-    color: red;
-    }
- </style>
 </head>
 <body>
  <div id="app">
@@ -43,7 +38,7 @@
 
          <!-- Right Side Of Navbar -->
          <ul class="navbar-nav ml-auto">
-           <!-- Authentication Links -->
+             <!-- Authentication Links -->
            @guest
              <li class="nav-item">
                  <a class="nav-link" href="{{route('user.signin')}}">{{ __('ログイン') }}</a>
@@ -52,9 +47,14 @@
                  <a class="nav-link" href="{{route('user.create')}}">{{ __('新規登録') }}</a>
              </li>
            @else
-             <li class="nav-item">
-                 <a class="nav-link" href="{{route('word.index')}}">{{ __('ホーム') }}</a>
-             </li>
+           <li class="nav-item">
+               <a class="nav-link" href="{{route('word.index')}}">{{ __('ホーム') }}</a>
+            </li>
+            <li class="nav-item">
+                @if(Auth::user()->admin_flg)
+                <a class="nav-link" href="{{route('chapter.index')}}">{{ __('CHAPTER') }}</a>
+                @endif
+            </li>
              <li class="nav-item">
                <a class="nav-link" href="{{route('user.index')}}">{{ __('ユーザ一覧') }}</a>
              </li>

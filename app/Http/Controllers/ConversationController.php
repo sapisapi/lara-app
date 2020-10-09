@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Conversation;
+use App\Chapter;
 use Illuminate\Http\Request;
 use App\Http\Requests\ConversationRequest;
 
@@ -31,7 +32,7 @@ class ConversationController extends Controller
 
     public function create($id)
     {
-        $chapter=Conversation::with('chapter')->where('chapter_id',$id)->first();
+        $chapter=Chapter::where('chapter_id',$id)->first('chapter_id');
         return view('conversation.create',compact('chapter'));
     }
 

@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\ClassificationRequest;
 use App\Classification;
+use App\Chapter;
+
+
 
 class ClassificationController extends Controller
 {
@@ -22,7 +25,7 @@ class ClassificationController extends Controller
 
     public function create($id)
     {
-        $chapter=Classification::with('chapter')->where('chapter_id',$id)->first('chapter_id');
+        $chapter=Chapter::where('chapter_id',$id)->first('chapter_id');
         return view('classification.create',compact('chapter'));
     }
 
@@ -74,5 +77,13 @@ class ClassificationController extends Controller
         return redirect()->route('classification.edit')->with('error_message', 'Failed');
         }
         return redirect()->route('chapter.index')->with('flash_message', 'updated!!');
+    }
+    public function destroy($id)
+    {
+        $classification = Classification::find($id);
+        if (!$classification->delete()) {
+        return redirect()->route('chapter.index')->with('error_message', 'Delete user failed');
+        }
+        return redirect()->route('chapter.index')->with('flash_message', 'delete success!!');
     }
 }
