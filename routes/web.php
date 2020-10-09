@@ -23,4 +23,5 @@ Route::group(['middleware' => 'auth'], function() {
 
 Route::group(['middleware' => ['auth', 'can:admin']], function () {
     Route::resource('user', 'UserController', ['only' => ['index', 'edit', 'update', 'destroy']]);
+    Route::resource('chapter', 'ChapterController');
 });
