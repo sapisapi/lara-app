@@ -2,12 +2,12 @@
 
 @section('content')
 <div class="container">
- <div class="row justify-content-center">
-   <div class="col-md-8">
-     <div class="card">
-       <div class="card-header">{{ __('単語一覧') }}</div>
-       <div class="card-body">
-         @if (count($errors) > 0)
+<div class="row justify-content-center">
+  <div class="col-md-8">
+    <div class="card">
+      <div class="card-header">{{ __('投稿一覧') }}</div>
+      <div class="card-body">
+       @if (count($errors) > 0)
          <div class="errors">
            <ul>
              @foreach ($errors->all() as $error)
@@ -15,10 +15,26 @@
              @endforeach
            </ul>
          </div>
-         @endif
-       </div>
+       @endif
+       <table class="table">
+         <thead>
+           <tr>
+             <th>日</th>
+             <th>英</th>
+           </tr>
+         </thead>
+         <tbody>
+           @foreach ($words as $word)
+             <tr>
+               <td>{{$word->japanese}}</td>
+               <td>{{$word->english}}</td>
+             </tr>
+           @endforeach
+         </tbody>
+       </table>
      </div>
-   </div>
- </div>
+    </div>
+  </div>
+</div>
 </div>
 @endsection

@@ -16,4 +16,10 @@ class Word extends Model
     'japanese',
     'english',
   ];
+
+  public function wordSave($params)
+   {
+     $isSave = $this->fill($params)->save();
+     return $isSave;
+   }
 }

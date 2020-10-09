@@ -10,6 +10,16 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    protected static function boot() 
+   {
+       parent::boot();
+       static::deleting(function($model) {
+           foreach ($model->microposts()->get() as $child) {
+               $child->delete();
+           }
+       });
+   }
+
     public function words()
    {
      return $this->hasMany('App\Word');
@@ -44,4 +54,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function userSave($params)
+   {
+     $isRegist = $this->fill($params)->save();
+     return $isRegist;
+   }
 }
