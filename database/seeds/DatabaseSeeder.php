@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
             WordsTableSeeder::class,
             ChaptersTableSeeder::class,
             ClassificationsTableSeeder::class,
+            ConversationsTableSeeder::class
         ]);
     }
 }
