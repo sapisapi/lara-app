@@ -34,6 +34,11 @@ ul .list  {
         <h4>{{$some[0]['classification']}}</h4>
         <p>{{$some[0]['classification_des']}}</p>
         </div>
+        <div style="text-align: center; margin-bottom: 30px;">
+            <audio class="col-md-8" controls controlslist="nodownload">
+                <source src="{!! url('/mp3/'.$some[0]['chapter_id'].'/'.$some[0]['classification'].'.mp3')!!}">
+            </audio>
+        </div>
         @foreach($values[0] as $value)
         <ul class="list-group" style="margin-bottom: 10px;">
             <li class="list-group-item">{!! nl2br(e($value['japanese'])) !!}</li>
@@ -58,6 +63,11 @@ ul .list  {
         <div class="container">
             <h4>{{$some[1]['classification']}}</h4>
             <p>{{$some[1]['classification_des']}}</p>
+        </div>
+        <div style="text-align: center; margin-bottom: 30px;">
+            <audio class="col-md-8" controls controlslist="nodownload">
+                <source src="{!! url('/mp3/'.$some[1]['chapter_id'].'/'.$some[1]['classification'].'.mp3')!!}">
+            </audio>
         </div>
 
         @foreach($values[1] as $value)
@@ -87,6 +97,12 @@ ul .list  {
             <h4>{{$some[2]['classification']}}</h4>
             <p>{{$some[2]['classification_des']}}</p>
         </div>
+        <div style="text-align: center; margin-bottom: 30px;">
+            <audio class="col-md-8" controls controlslist="nodownload">
+                <source src="{!! url('/mp3/'.$some[2]['chapter_id'].'/'.$some[2]['classification'].'.mp3')!!}">
+            </audio>
+        </div>
+
         @foreach($values[2] as $value)
         <ul class="list-group" style="margin-bottom: 10px;">
             <li class="list-group-item">{!! nl2br(e($value['japanese'])) !!}</li>
@@ -113,6 +129,11 @@ ul .list  {
         <div class="container">
             <h4>{{$some[3]['classification']}}</h4>
             <p>{{$some[3]['classification_des']}}</p>
+        </div>
+        <div style="text-align: center; margin-bottom: 30px;">
+            <audio class="col-md-8" controls controlslist="nodownload">
+                <source src="{!! url('/mp3/'.$some[3]['chapter_id'].'/'.$some[3]['classification'].'.mp3')!!}">
+            </audio>
         </div>
         @foreach($values[3] as $value)
         <ul class="list-group" style="margin-bottom: 10px;">
@@ -141,6 +162,12 @@ ul .list  {
             <h4>{{$some[4]['classification']}}</h4>
             <p>{{$some[4]['classification_des']}}</p>
         </div>
+        <div style="text-align: center; margin-bottom: 30px;">
+            <audio class="col-md-8" controls controlslist="nodownload">
+                <source src="{!! url('/mp3/'.$some[4]['chapter_id'].'/'.$some[4]['classification'].'.mp3')!!}">
+            </audio>
+        </div>
+
         @foreach($values[4] as $value)
         <ul class="list-group" style="margin-bottom: 10px;">
             <li class="list-group-item">{!! nl2br(e($value['japanese'])) !!}</li>

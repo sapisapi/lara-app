@@ -46,7 +46,7 @@ class UserController extends Controller
         return view('user.create');
     }
 
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
         $user     = new User;
         $name     = $request->input('name');

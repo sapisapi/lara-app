@@ -25,7 +25,7 @@
    <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
      <div class="container">
        <a class="navbar-brand" href="{{ url('/') }}">
-           {{ config('app.name', 'Laravel') }}
+           {{ config('app.name', 'english') }}
        </a>
        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
            <span class="navbar-toggler-icon"></span>
@@ -47,19 +47,53 @@
                  <a class="nav-link" href="{{route('user.create')}}">{{ __('新規登録') }}</a>
              </li>
            @else
-           <li class="nav-item">
-               <a class="nav-link" href="{{route('word.index')}}">{{ __('ホーム') }}</a>
+            <li class="nav-item">
+               <a class="nav-link" href="{{route('word.index')}}">{{ __('単語') }}</a>
             </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('word.create')}}">{{ __('作成') }}</a>
+            </li>
+
             <li class="nav-item">
                 @if(Auth::user()->admin_flg)
                 <a class="nav-link" href="{{route('chapter.index')}}">{{ __('CHAPTER') }}</a>
                 @endif
             </li>
-             <li class="nav-item">
-               <a class="nav-link" href="{{route('user.index')}}">{{ __('ユーザ一覧') }}</a>
+
+            <li class="nav-item dropdown">
+             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+               基本 <span class="caret"></span>
+               </a>
+               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+               @foreach($data['apps_cha'] as $home_chapter)
+                 <a class="dropdown-item" style="margin: 0px;"href="{{route('basic.show', $id=$home_chapter->chapter_id)}}">{{ __($home_chapter->chapter_id) }}</a>
+               @endforeach
+               </div>
              </li>
+
+             <li class="nav-item dropdown">
+             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+               会話<span class="caret"></span>
+             </a>
+                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    @foreach($data['apps_cha'] as $home_chapter)
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    {{ __($home_chapter->chapter_id) }}<span class="caret"></span>
+                    </a>
+                        @foreach($data['apps_con'] as $show)
+                          @if($show->chapter_id==$home_chapter->chapter_id)
+                            <a class="dropdown-item" style="margin: 0px;" href="{{route('conversation.show',$id=$show->id)}}">{{ __($show->unit) }}</a>
+                          @endif
+                        @endforeach
+                    @endforeach
+                  </div>
+             </li>
+
              <li class="nav-item">
-               <a class="nav-link" href="{{route('word.create')}}">{{ __('投稿') }}</a>
+                @if(Auth::user()->admin_flg)
+                <a class="nav-link" href="{{route('user.index')}}">{{ __('ユーザ一覧') }}</a>
+                @endif
              </li>
              <li class="nav-item dropdown">
                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -87,11 +121,15 @@
 
    <!-- フラッシュメッセージ -->
    @if (Session::has('flash_message'))
-     <p class="bg-success">{!! Session::get('flash_message') !!}</p>
+    <div style="text-align:center;">
+        <p class="bg-success">{!! Session::get('flash_message') !!}</p>
+    </div>
    @endif
 
    @if (Session::has('error_message'))
-     <p class="bg-danger">{!! Session::get('error_message') !!}</p>
+    <div style="text-align:center;">
+        <p class="bg-danger">{!! Session::get('error_message') !!}</p>
+    </div>
    @endif
 
    <main class="py-4">
