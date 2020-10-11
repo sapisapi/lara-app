@@ -94,7 +94,7 @@ class UserController extends Controller
                     ->route('user.edit', ['user' => $user->id])
                     ->with('error_message', 'Update user failed');
         }
-        return redirect()->route('micropost.index')->with('flash_message', 'update success!!');
+        return redirect()->route('word.index')->with('flash_message', 'update success!!');
     }
 
     public function destroy($id)

@@ -14,7 +14,7 @@ class User extends Authenticatable
    {
        parent::boot();
        static::deleting(function($model) {
-           foreach ($model->microposts()->get() as $child) {
+           foreach ($model->words()->get() as $child) {
                $child->delete();
            }
        });
