@@ -14,8 +14,8 @@ class BasicController extends Controller
 {
     public function show($id)
     {
-        $some = Classification::where('chapter_id',$id)->get();
-        $basics = Basic::where('chapter_id',$id)->get();
+        $some = Classification::where('chapter_id',$id)->get()->sortBy('id');;
+        $basics = Basic::where('chapter_id',$id)->get()->sortBy('id');;
         $chapter = Chapter::where('chapter_id',$id)->first();
         $i=0;
         $values = [];
