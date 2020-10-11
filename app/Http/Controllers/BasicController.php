@@ -29,7 +29,7 @@ class BasicController extends Controller
             }
             $i = $i + 1;
         }
-        return view("basic.show",compact('some','chapter','values','values1','values2','values3','values4'));
+        return view("basic.show",compact('some','chapter','values'));
     }
     public function create($id)
     {
