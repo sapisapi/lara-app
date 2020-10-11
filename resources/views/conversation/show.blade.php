@@ -17,11 +17,7 @@
     </div>
 
     <h2 style="text-align: center;">例文</h2>
-    <div style="text-align: center; margin-bottom: 30px;">
-        <audio class="col-md-8" controls controlslist="nodownload">
-            <source src="{!! url('/mp3/'.$unit->chapter_id.'/'.$unit->unit.'.mp3')!!}">
-        </audio>
-    </div>
+    
         <p class="list-group-item">{!! nl2br(e($unit->japanese)) !!}</p>
         <p class="list-group-item"style="margin-bottom: 45px;">{!! nl2br(e($unit->english)) !!}</p>
     
