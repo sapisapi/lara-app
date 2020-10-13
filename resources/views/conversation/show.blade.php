@@ -35,6 +35,11 @@
         <div style="text-align:center; margin-bottom:30px;">
             <a href="{{route('conversation.edit', $id=$unit->id)}}"><button type="button" class="btn btn-outline-primary btn-lg w-100">Edit</button></a>
         </div>
+        <form name="delete_form" action="{{route('conversation.destroy', $unit->english)}}" method="POST">
+            @csrf
+            @method('delete')
+            <input type="submit" style="text-align:center; margin-bottom:30px;" class="btn btn-outline-danger btn-lg w-100" value="Delete" onclick='return confirm("本当に削除してよろしいですか？");'>
+        </form>
     @endif
     
     @if(!$prev==null)

@@ -95,14 +95,18 @@ class ConversationController extends Controller
         'tip' => $tip,
         ];
         if (!$conversation->conversationSave($params)) {
-        // 登録失敗
         return redirect()->route('conversation.edit')->with('error_message', 'Regist failed');
         }
-        return redirect()->route('conversation.index')->with('flash_message', 'Regist success!!');
+
+        return redirect()->route('conversation.show',$id)->with('flash_message', 'Regist success!!');
     }
 
     public function destroy($id)
     {
-        //
+        $conversation = Conversation::find($id);
+        if (!$conversation->delete()) {
+        return redirect()->back()->with('error_message', 'Failed');
+        }
+        return redirect()->back()->with('flash_message', 'Deleted!!');
     }
 }

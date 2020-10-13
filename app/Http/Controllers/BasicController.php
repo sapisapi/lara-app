@@ -31,6 +31,7 @@ class BasicController extends Controller
         }
         return view("basic.show",compact('some','chapter','values'));
     }
+    
     public function create($id)
     {
         $one=Classification::where('id',$id)->first();
